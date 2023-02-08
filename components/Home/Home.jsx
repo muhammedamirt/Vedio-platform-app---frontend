@@ -1,42 +1,26 @@
 import React from 'react'
 import NavBar from '../NaveBar/NavBar';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import Layout from '../Layout/Layout';
+import VideoContents from '../VideoContents/VideoContents';
+import { dummyData } from '../../dummy/dummyData'
+import Link from 'next/link';
 
 
 const Home = () => {
     return (
-        <>
-            <div>
-                <NavBar />
-            </div>
-            <div className='min-h-[100vh] w-full border'>
-                <div className='border w-64 px-2 py-2'>
-                    <div className='w-60'>
-                        <img src="https://wallpapercave.com/wp/wp9424849.jpg" alt="tumpnail" />
-                    </div>
-                    <div className='flex gap-5'>
-                        <div className='h-12 w-12 border rounded-full'>
-                            <img className='h-12 w-12 rounded-full object-cover' src="https://yt3.googleusercontent.com/E5NXIkwoi7Z13Jsw5IJFq7JUrkobU4ag3csFCZVOx4qUT1PaUepShQAhL1t5eAFmVh7NugTmRQ=s900-c-k-c0x00ffffff-no-rj" alt="avathar" />
+        <Layout>
+            <div className=" sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                {
+                    dummyData.map((content) => {
+                        return <div className=''>
+                            <Link href={'/user/watchNow'}>
+                                <VideoContents content={content} />
+                            </Link>
                         </div>
-                        <div>
-                            <span className='text-white text-xs'>
-                                <div className='flex gap-1'>
-                                    <span className=''>
-                                        <RemoveRedEyeIcon fontSize='' />
-                                    </span>
-                                    <p>100k</p>
-                                </div>
-                            </span>
-                            <div>
-                                <p className='text-white text-xs'>
-                                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    })
+                }
             </div>
-        </>
+        </Layout>
     )
 }
 
